@@ -1,0 +1,79 @@
+<div class="">
+    <a class="btn btn-primary ml-1" href="admin/product/create">create product</a>
+    <div id ="alert-close-1s-tableProduct"class="alert alert-info alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+       <span id="info-alert-deletep-password"><strong>Info!</strong> reset password seeced.</span> 
+      </div>
+    <table class="table table-hover table-sm table-bordered mt-3">
+      <thead class="text-center">
+        <tr>
+          <th>index</th>
+          <th>Name</th>
+          <th>description</th>
+          <th>price</th>
+          <th>discount</th>
+          <th>category</th>
+          <th>brand</th>
+          <th>rate</th>
+          <th>numberRate</th>
+          <th>liked</th>
+          <th>sold</th>
+          <th>amount</th>
+          <th>image</th>
+          <th>feature</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <% let indexProduct = 1 %>
+          <% for(let i=0; i <listProducts.length; i++){ %>
+      
+            <tr>
+              <td>
+                <%= indexProduct++ %>
+              </td>
+              <td>
+                <%= listProducts[i].name.slice(0, 30) %>...
+              </td>
+              <td>
+                <%= listProducts[i].description.slice(0, 30) %>...
+              </td>
+              <td>
+                <%= listProducts[i].price %>
+              </td>
+              <td>
+                <%= listProducts[i].discount %>
+              </td>
+              <td>
+                <%= listProducts[i].category.name %>
+              </td>
+              <td>
+                <%= listProducts[i].brand.name %>
+              </td>
+              <td>
+                <%= listProducts[i].rate %>
+              </td>
+              <td>
+                <%= listProducts[i].numberRate %>
+              </td>
+              <td>
+                <%= listProducts[i].liked %>
+              </td>
+              <td>
+                <%= listProducts[i].sold %>
+              </td>
+              <td>
+                <%= listProducts[i].amount %>
+              </td>
+              <td>
+                <img src="/<%= listProducts[i].image %>" alt="img" width="30px" height="30px"> 
+                </td>
+              <td>
+                <button class="btn btn-danger btn-sm btn-delete-product" data-id-product="<%=listProducts[i]._id  %>">Delete</button>
+                <a class="btn btn-warning btn-sm btn-update-product" href='/admin/product/update/id/<%=listProducts[i]._id %>' >update</a>
+              </td>
+            </tr>
+            <% } %>
+      
+      </tbody>
+    </table>
+  </div>

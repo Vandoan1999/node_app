@@ -1,0 +1,82 @@
+<form  class="container" method="POST" enctype="multipart/form-data" action="/admin/product/create" >
+  
+   
+    <h1 class="text-primary">create product</h1>
+    <div class="form-group">
+        <label for="name">product name</label>
+        <input type="text" class="form-control" placeholder="Enter name product...." id="name" name="name" value="">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">description</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" placeholder="description..." value=""></textarea>
+    </div>
+    <div class="form-group">
+        <label for="price">price ($)</label>
+        <input type="number" class="form-control col-sm-3" placeholder="price..." id="price" name="price" min="0.00" step="0.01" value="">
+    </div>
+    <div class="form-group">
+        <label for="discount">discount (1-100%)</label>
+        <input type="number" class="form-control col-sm-3" placeholder="Enter discount product...." id="discount" name="discount" min="0" max="100" value="">
+    </div>
+    <label for="select_list_category" >select category</label>
+    <div class="form-group input-group col-lg-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+        </div>
+       
+            
+        <select id="select_list_category" class="form-control" name="category" required>
+      
+            <% if(typeof(listCategory) !== 'undefined'){%> 
+            <% for(let i = 0 ; i < listCategory.length; i++){ %> 
+            <option value="<%= listCategory[i]._id %>"><%= listCategory[i].name %></option>
+                
+             <% } %> 
+            <% } %> 
+
+               
+        </select>
+       
+    </div>
+
+    <label for="select-list-brands">select list brand</label>
+    <div class="form-group input-group col-lg-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+        </div>
+        <select id="select-list-brands" class="form-control" name="brand" required>
+
+            <% if(typeof(listBrand) !== 'undefined'){%> 
+            <% for(let i = 0 ; i < listBrand.length; i++){ %> 
+            <option value="<%= listBrand[i]._id %>"><%= listBrand[i].name %></option>
+                <% } %> 
+            <%} %> 
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="amount">amount</label>
+        <input type="text" class="form-control col-sm-1" placeholder="Amount ...." id="amount" name="amount" value="">
+    </div>
+    <div class="form-group pb-n5">
+        <label for="image-product-file" class="btn bt-small btn-secondary" >click to choose image . . . . . . .</label>
+        <input type="file" class="form-control" id="image-product-file" name="image_product"  style="visibility:hidden;" accept="image/png ,image/jpeg">
+    </div>
+    <img id="img-product" src="/default_product_image.png" alt="img" width="100px" height="100px" class="border border-warning">
+    <input type="hidden" name="image_old" value="">
+    <br>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<script>
+    let input = document.getElementById('image-product-file')
+    let img = document.getElementById('img-product')
+    let reader = new FileReader()
+        input.onchange = function (e) {
+            reader.readAsDataURL(input.files[0]);
+            reader.onloadend = () => {
+                img.setAttribute('src', reader.result);
+            };
+
+        }
+</script>
+

@@ -1,0 +1,8 @@
+<form  class="container" method="POST" action="/admin/brand/updated?_method=PATCH">
+    <input type="hidden" name="_id" value="<%= brand._id %>">
+    <div class="form-group">
+        <label for="name">Brand name</label>
+        <input type="text" class="form-control" placeholder="Enter name brand...." id="name" name="name" value="<%= brand.name %>">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

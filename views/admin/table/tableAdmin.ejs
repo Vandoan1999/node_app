@@ -1,0 +1,43 @@
+
+<table class="table table-hover table-sm table-bordered">
+  <div id ="alert-close-1s-tableAccount"class="alert alert-info alert-dismissible fade show">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+   <span id="info-alert-deletep-password"><strong>Info!</strong> reset password seeced.</span> 
+  </div>
+    <thead class="text-center">
+      <tr>
+        <th scope="col">index</th>
+        <th scope="col">Email</th>
+        <th scope="col">type</th>
+        <th scope="col">image</th>
+        <th scope="col">create at</th>
+          <th scope="col">updated at</th>
+        <th scope="col">feature</th>
+      </tr>
+    </thead>
+
+    <tbody class="text-center">
+      <% let index=1 %>
+        <% for(let ob in listAccounts){ %>
+          <tr>
+            <td scope="row">
+              <%= index++ %>
+            </td>
+            <td>
+              <%= listAccounts[ob].email %>
+            </td>
+            <td class="row-type">
+              <%= listAccounts[ob].type %>
+            </td>
+            <td><img src="/<%= listAccounts[ob].image %>" alt="img" width="50px" height="50px"> </td>
+            <td> <%= listAccounts[ob].createdAt %></td>
+            <td><%= listAccounts[ob].updatedAt %></td>
+            <td class="row-feature">
+              <input type="button" class="btn btn-danger btn-sm btn-delete-password" value="delete acount" data-id-password="<%= listAccounts[ob]._id %>">
+              <input type="button" class="btn btn-warning btn-sm btn-reset-password" value="reset password" data-id-password="<%= listAccounts[ob]._id %>">
+            </td>
+
+          </tr>
+          <% } %>
+    </tbody>
+  </table>
